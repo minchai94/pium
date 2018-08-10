@@ -24,3 +24,20 @@ body {
   text-align: center;
   margin: 4vw;
 }
+
+
+#slider {
+  height: 160px !important;
+  width: 100% !important;
+  overflow: hidden;
+  padding: 10px;
+}
+
+#slider .rs-container {
+  left: 50%;
+  margin-left: -300px;
+}
+
+#slider .rs-tooltip {
+  top: 100px;
+}

@@ -53,4 +53,45 @@ function checkTime(i) {
     return i;
 }
 
-startTime();
+function setTimeNow(){
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    return h*3600 + m*60 +s;
+}
+
+var timeNow = setTimeNow();
+
+$("#slider").roundSlider({
+    sliderType: "min-range",
+    circleShape: "custom-quarter",
+    min: 0,
+    max: 86400,
+    value: timeNow,
+    startAngle: 45,
+    editableTooltip: false,
+    radius: 300,
+    width: 20,
+    handleShape: "dot",
+    showTooltip: false,
+});
+
+$("#slider").on("change", function (e) {
+    console.log(e);
+    console.log(e.value);
+    timeNow = e.value;
+    displayTime(timeNow);
+});
+
+function displayTime(time){
+    var h = Math.floor(timeNow / 3600);
+    var m = Math.floor(timeNow % 3600 / 60);
+    var s = Math.floor(timeNow % 3600 % 60);
+    console.log(h, m, s);
+    document.getElementById('txt').innerHTML =
+        h + ":" + m + ":" + s;
+
+}
+
+displayTime(timeNow);
